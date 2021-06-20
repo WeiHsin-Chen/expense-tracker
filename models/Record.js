@@ -2,8 +2,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const recordSchema = new Schema({
-  id: String,
-
   name: {
     type: String,
     required: true
@@ -15,7 +13,7 @@ const recordSchema = new Schema({
   },
 
   date: {
-    type: Date,
+    type: String,
     required: true
   },
 
