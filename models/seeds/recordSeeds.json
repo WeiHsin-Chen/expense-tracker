@@ -1,0 +1,27 @@
+{
+  "recordSeeds": [
+    {
+      "name": "午餐",
+      "category": "category-meal",
+      "date": "2021-04-29",
+      "amount": 300
+    },
+    {
+      "name": "捷運",
+      "category": "category-traffic",
+      "date": "2021-04-30",
+      "amount": 200
+    },
+    {
+      "name": "電影：電流大戰",
+      "category": "category-play",
+      "date": "2021-04-30",
+      "amount": 250
+    },
+    {
+      "name": "房屋租金",
+      "category": "category-home",
+      "date": "2021-05-02",
+      "amount": 22000
+    }
+]}
