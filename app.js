@@ -8,11 +8,14 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
 const mongoose = require('mongoose') // 載入 mongoose
-
+const db = mongoose.connection       // 取得資料庫連線狀態
 
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+
+// setting static files for css
+app.use(express.static('public'))
 
 // setting body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -23,7 +26,6 @@ app.use(methodOverride('_method'))
 // setting mongoose
 mongoose.connect('mongodb://localhost/restaurant_list', { useNewUrlParser: true, useUnifiedTopology: true }) // 設定連線到 mongoDB
 
-const db = mongoose.connection       // 取得資料庫連線狀態
 db.on('error', () => {               // 連線異常
   console.log('mongodb error!')
 })

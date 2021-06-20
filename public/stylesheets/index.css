@@ -1,0 +1,14 @@
+/* .container {
+  display: flex;
+
+} */
+
+.total {
+  font-size: x-large;  
+  align-items: flex-end;
+}
+
+.totalAmount {
+  font-size: xxx-large; 
+  color: darkred; 
+}
