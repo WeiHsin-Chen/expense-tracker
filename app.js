@@ -10,6 +10,8 @@ const methodOverride = require('method-override')
 const mongoose = require('mongoose') // 載入 mongoose
 const db = mongoose.connection       // 取得資料庫連線狀態
 
+const routes = require('./routes')
+
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -33,13 +35,10 @@ db.once('open', () => {              // 連線成功
   console.log('mongodb connected!')
 })
 
+// 引用 routes
+app.use(routes)
 
-// setting routes
-app.get('/', (req, res) => {
-  res.render('index')
-})
-
-// starts the express server and listening for connections.
+//start and listen on the Express server
 app.listen(port, () => {
   console.log(`Express app listening on port ${port}.`)
 })

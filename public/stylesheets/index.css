@@ -1,7 +1,3 @@
-/* .container {
-  display: flex;
-
-} */
 
 .total {
   font-size: x-large;  
@@ -11,4 +7,13 @@
 .totalAmount {
   font-size: xxx-large; 
   color: darkred; 
+}
+
+.reminder {
+  font-size: xx-large;
+  color: darkred; 
+}
+
+.warning {
+  font-size: small;
 }
