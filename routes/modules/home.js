@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
       Category.find()
         .lean()
         .then(categories => {
-          records.foreach(record => {
+          records.forEach(record => {
             totalAmount += record.amount
             categories.forEach(category => {
               if (record.category === category.name) {
