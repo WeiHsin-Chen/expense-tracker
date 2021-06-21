@@ -47,7 +47,7 @@
       "icon": "fas fa-utensils"
     },
     {
-      "name": "others",
+      "name": "category-others",
       "name_cn": "其他",
       "icon": "fas fa-pen"
     }
