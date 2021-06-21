@@ -24,4 +24,32 @@
       "date": "2021-05-02",
       "amount": 22000
     }
-]}
+  ],
+  "categorySeeds": [
+    {
+      "name": "category-home",
+      "name_cn": "家居物業",
+      "icon": "fas fa-home"
+    },
+    {
+      "name": "category-traffic",
+      "name_cn": "交通出行",
+      "icon": "fas fa-shuttle-van"
+    },
+    {
+      "name": "category-play",
+      "name_cn": "休閒娛樂",
+      "icon": "fas fa-grin-beam"
+    },
+    {
+      "name": "category-meal",
+      "name_cn": "餐飲食品",
+      "icon": "fas fa-utensils"
+    },
+    {
+      "name": "others",
+      "name_cn": "其他",
+      "icon": "fas fa-pen"
+    }
+  ]
+}

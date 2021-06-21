@@ -2,17 +2,32 @@
 const express = require('express')
 const router = express.Router()
 
-// 引用 Todo model
+// 引用 models
 const Record = require('../../models/Record')
+const Category = require('../../models/Category')
 
 // route setting with models seeder connection
 router.get('/', (req, res) => {
-  const sortBy = req.query.sortBy || '_id'
 
   Record.find()
     .lean()
-    .sort(sortBy)
-    .then(records => res.render('index', { records, sortBy }))
+    .then(records => {
+      let totalAmount = 0
+
+      Category.find()
+        .lean()
+        .then(categories => {
+          records.foreach(record => {
+            totalAmount += record.amount
+            categories.forEach(category => {
+              if (record.category === category.name) {
+                record.category = category.icon
+              }
+            })
+          })
+          res.render('index', { records, categories, totalAmount })
+        })
+    })
     .catch(error => console.error(error))
 })
 
