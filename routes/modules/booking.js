@@ -21,9 +21,31 @@ router.post('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// route setting for create new expense booking
-router.get('/edit', (req, res) => {
-  return res.render('edit')
+// route setting for editing booking view
+router.get('/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .lean()
+    .then((record) => res.render('edit', { record }))
+    .catch(error => console.log(error))
+})
+
+router.post('/:id/edit', (req, res) => {
+  const id = req.params.id
+  const name = req.body.name
+  const category = req.body.category
+  const date = req.body.date
+  const amount = req.body.amount
+  return Record.findById(id)
+    .then(record => {
+      record.name = name
+      record.category = category
+      record.date = date
+      record.amount = amount
+      return record.save()
+    })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 // 匯出路由器

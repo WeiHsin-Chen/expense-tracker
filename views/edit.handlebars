@@ -11,37 +11,41 @@
       <div class="col-2 warning">
         *必填欄位
       </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="expense-item">名稱*</span>
-        <input type="text" class="form-control" placeholder="消費品項" aria-label="消費品項" aria-describedby="expense-item">
-      </div>
 
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="expense-date">日期*</span>
-        <input type="date" class="form-control" placeholder="消費日期" aria-label="消費日期" aria-describedby="expense-date">
-      </div>
+      <form action="/booking/{{record._id}}/edit " method="POST">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="name">名稱*</span>
+          <input type="text" class="form-control" name="name" value="{{ record.name }}" placeholder="消費品項"
+            aria-label="消費品項" aria-describedby="expense-item">
+        </div>
 
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="expense-category">類別*</span>
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Select</option>
-          <option value="category-home">家居物業</option>
-          <option value="category-traffic">交通出行</option>
-          <option value="category-play">休閒娛樂</option>
-          <option value="category-meal">餐飲食品</option>
-          <option value="category-other">其他</option>
-        </select>
-      </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="date">日期*</span>
+          <input type="date" class="form-control" name="date" value="{{ record.date }}" placeholder="消費日期"
+            aria-label="消費日期" aria-describedby="expense-date">
+        </div>
 
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="expense-amount">金額*</span>
-        <input type="text" class="form-control" aria-label="Amount">
-      </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="category">類別*</span>
+          <select class="form-select" name="category" value="{{ record.category }}" aria-label="Default select example">
+            <option selected>Select</option>
+            <option value="category-home">家居物業</option>
+            <option value="category-traffic">交通出行</option>
+            <option value="category-play">休閒娛樂</option>
+            <option value="category-meal">餐飲食品</option>
+            <option value="category-other">其他</option>
+          </select>
+        </div>
 
-      <a href="../">
-        <input class="btn btn-outline-primary" type="submit" value="確認修改支出">
-      </a>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="amount">金額*</span>
+          <input type="text" class="form-control" name="amount" value="{{ record.amount }}" aria-label="Amount">
+        </div>
 
+        <a href="../">
+          <input class="btn btn-outline-primary" type="submit" value="確認修改支出">
+        </a>
+      </form>
     </div>
     <div class="col"></div>
   </div>

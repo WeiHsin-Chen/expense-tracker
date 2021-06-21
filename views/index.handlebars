@@ -51,10 +51,14 @@
               $ {{this.amount}}
             </td>
             <td>
-              <input class="btn btn-outline-info" type="submit" value="編輯">
+              <a href="../booking/{{this._id}}/edit">
+                <input class="btn btn-outline-info" type="submit" value="編輯">
+              </a>
             </td>
             <td>
-              <input class="btn btn-outline-danger" type="submit" value="刪除">
+              <a href="/">
+                <input class="btn btn-outline-danger" type="submit" value="刪除">
+              </a>
             </td>
           </tr>
           {{/each}}
