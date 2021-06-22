@@ -11,9 +11,9 @@ router.use('/', home)
 const booking = require('./modules/booking')
 router.use('/booking', booking)
 
-// // 引入 search 模組程式碼
-// const search = require('./modules/search')
-// router.use('/search', search)
+// 引入 filter 模組程式碼
+const filter = require('./modules/filter')
+router.use('/filter', filter)
 
 // 匯出路由器
 module.exports = router

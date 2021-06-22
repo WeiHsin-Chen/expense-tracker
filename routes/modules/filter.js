@@ -8,11 +8,17 @@ const Category = require('../../models/Category')
 
 // route setting for search not yet
 router.get('/', (req, res) => {
-  const categoryFilter = req.query.categoryFilter
+  const filterBy = req.query.filterBy
 
-  res.render('index')
-    .then(console.log(categoryFilter))
-
+  return Record.find()
+    .lean()
+    .then((records) => {
+      const filteredRecords = records.filter(record => {
+        return record.category === filterBy
+      })
+      res.render('index', { records: filteredRecords })
+    })
+    .catch(error => console.log(error))
 })
 
 // 匯出路由模組
