@@ -5,17 +5,19 @@
 
       {{!-- For filter function --}}
       <div class="dropdown">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenu"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          類別
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">家居物業</a></li>
-          <li><a class="dropdown-item" href="#">交通出行</a></li>
-          <li><a class="dropdown-item" href="#">休閒娛樂</a></li>
-          <li><a class="dropdown-item" href="#">餐飲食品</a></li>
-          <li><a class="dropdown-item" href="#">其他</a></li>
-        </ul>
+        <form action="/filter">
+          <div class="form-group">
+            <h4 class="mb-2">記帳類別</h4>
+            <select name="filterBy" id="inputFilter" class="form-control" onchange="action='';submit();">
+              <option value="categoryAll" selected>全部記帳明細</option>
+              <option value="category-home" {{#if (eq sortBy 'category-home' )}} selected {{/if}}>家居物業</option>
+              <option value="category-traffic" {{#if (eq sortBy 'category-traffic' )}} selected {{/if}}>交通出行</option>
+              <option value="category-play" {{#if (eq sortBy 'category-play' )}} selected {{/if}}>休閒娛樂</option>
+              <option value="category-meal" {{#if (eq sortBy 'category-meal' )}} selected {{/if}}>餐飲食品</option>
+              <option value="category-others" {{#if (eq sortBy 'category-others' )}} selected {{/if}}>其他</option>
+            </select>
+          </div>
+        </form>
       </div>
 
       {{!-- Total Amount Section --}}

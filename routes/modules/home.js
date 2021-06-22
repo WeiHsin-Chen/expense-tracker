@@ -31,9 +31,9 @@ router.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
-router.get('/', (req, res) => {
-  res.render('index')
-})
+// router.get('/', (req, res) => {
+//   res.render('index')
+// })
 
 // 匯出路由模組
 module.exports = router

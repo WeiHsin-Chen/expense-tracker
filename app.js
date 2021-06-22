@@ -6,6 +6,8 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const hbshelpers = require('handlebars-helpers')
+const helpers = hbshelpers()
 
 const routes = require('./routes')
 
