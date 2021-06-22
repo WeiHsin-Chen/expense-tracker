@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
       const filteredRecords = records.filter(record => {
         return record.category === filterBy
       })
-      res.render('index', { records: filteredRecords })
+      res.render('index', { records: filteredRecords, filterBy })
     })
     .catch(error => console.log(error))
 })
