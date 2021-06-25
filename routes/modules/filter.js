@@ -6,6 +6,11 @@ const router = express.Router()
 const Record = require('../../models/Record')
 const Category = require('../../models/Category')
 
+//引用 tools function
+const totalAmountFunction = require('../../tools/totalAmount')
+
+let totalAmount = 0
+
 // route setting for search not yet
 router.get('/', (req, res) => {
   const filterBy = req.query.filterBy
@@ -16,7 +21,8 @@ router.get('/', (req, res) => {
       const filteredRecords = records.filter(record => {
         return record.category === filterBy
       })
-      res.render('index', { records: filteredRecords, filterBy })
+      totalAmount = totalAmountFunction(filteredRecords, totalAmount)
+      res.render('index', { records: filteredRecords, filterBy, totalAmount })
     })
     .catch(error => console.log(error))
 })

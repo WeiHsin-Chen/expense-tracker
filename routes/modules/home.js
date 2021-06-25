@@ -6,23 +6,26 @@ const router = express.Router()
 const Record = require('../../models/Record')
 const Category = require('../../models/Category')
 
+//引用 tools function
+const totalAmountFunction = require('../../tools/totalAmount')
+
+let totalAmount = 0
+
 // route setting with models seeder connection
 router.get('/', (req, res) => {
 
   Record.find()
     .lean()
     .then(records => {
-      let totalAmount = 0
-
       Category.find()
         .lean()
         .then(categories => {
           records.forEach(record => {
-            totalAmount += record.amount
             categories.forEach(category => {
               if (record.category === category.name) {
                 record.category = category.icon
               }
+              totalAmount = totalAmountFunction(records, totalAmount)
             })
           })
           res.render('index', { records, totalAmount })
