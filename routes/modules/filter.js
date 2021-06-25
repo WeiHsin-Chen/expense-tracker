@@ -29,7 +29,6 @@ router.get('/', (req, res) => {
           totalAmount = totalAmountFunction(filteredRecords, totalAmount)
           res.render('index', { records: filteredRecords, filterBy, totalAmount })
         })
-
     })
     .catch(error => console.log(error))
 })

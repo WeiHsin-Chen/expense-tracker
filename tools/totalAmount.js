@@ -6,5 +6,4 @@ function totalAmount(records, totalAmount) {
   return totalAmount
 }
 
-
 module.exports = totalAmount
