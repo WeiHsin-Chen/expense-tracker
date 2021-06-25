@@ -8,6 +8,7 @@ const Category = require('../../models/Category')
 
 //引用 tools function
 const totalAmountFunction = require('../../tools/totalAmount')
+const iconSwitchFunction = require('../../tools/iconSwitch')
 
 let totalAmount = 0
 
@@ -21,8 +22,14 @@ router.get('/', (req, res) => {
       const filteredRecords = records.filter(record => {
         return record.category === filterBy
       })
-      totalAmount = totalAmountFunction(filteredRecords, totalAmount)
-      res.render('index', { records: filteredRecords, filterBy, totalAmount })
+      Category.find()
+        .lean()
+        .then((categories) => {
+          iconSwitchFunction(records, categories)
+          totalAmount = totalAmountFunction(filteredRecords, totalAmount)
+          res.render('index', { records: filteredRecords, filterBy, totalAmount })
+        })
+
     })
     .catch(error => console.log(error))
 })

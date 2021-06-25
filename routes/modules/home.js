@@ -8,6 +8,7 @@ const Category = require('../../models/Category')
 
 //引用 tools function
 const totalAmountFunction = require('../../tools/totalAmount')
+const iconSwitchFunction = require('../../tools/iconSwitch')
 
 let totalAmount = 0
 
@@ -20,14 +21,8 @@ router.get('/', (req, res) => {
       Category.find()
         .lean()
         .then(categories => {
-          records.forEach(record => {
-            categories.forEach(category => {
-              if (record.category === category.name) {
-                record.category = category.icon
-              }
-              totalAmount = totalAmountFunction(records, totalAmount)
-            })
-          })
+          iconSwitchFunction(records, categories)
+          totalAmount = totalAmountFunction(records, totalAmount)
           res.render('index', { records, totalAmount })
         })
     })
