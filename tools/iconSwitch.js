@@ -3,10 +3,9 @@ async function iconSwitch(records, categories) {
     categories.forEach(category => {
       if (record.category === category.name) {
         record.category = category.icon
-        return records
       }
+      return records
     })
   })
 }
-
 module.exports = iconSwitch
