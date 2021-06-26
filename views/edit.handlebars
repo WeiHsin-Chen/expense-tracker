@@ -29,11 +29,12 @@
           <span class="input-group-text" id="category">類別*</span>
           <select class="form-select" name="category" value="{{ record.category }}" aria-label="Default select example">
             <option selected disabled>記帳類別</option>
-            <option value="category-home">家居物業</option>
-            <option value="category-traffic">交通出行</option>
-            <option value="category-play">休閒娛樂</option>
-            <option value="category-meal">餐飲食品</option>
-            <option value="category-others">其他</option>
+            <option value="category-home" {{#if (eq record.category 'category-home' )}} selected {{/if}}>家居物業</option>
+            <option value="category-traffic" {{#if (eq record.category 'category-traffic' )}} selected {{/if}}>交通出行
+            </option>
+            <option value="category-play" {{#if (eq record.category 'category-play' )}} selected {{/if}}>休閒娛樂</option>
+            <option value="category-meal" {{#if (eq record.category 'category-meal' )}} selected {{/if}}>餐飲食品</option>
+            <option value="category-others" {{#if (eq record.category 'category-others' )}} selected {{/if}}>其他</option>
           </select>
         </div>
 
