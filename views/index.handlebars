@@ -9,7 +9,7 @@
           <div class="form-group">
             <h4 class="mb-2">記帳類別</h4>
             <select name="filterBy" id="inputFilter" class="form-control" onchange="action='/filter';submit();">
-              <option value="categoryAll" selected>記帳類別</option>
+              <option value="categoryAll" selected disabled>記帳類別</option>
               <option value="category-home" {{#if (eq filterBy 'category-home' )}} selected {{/if}}>家居物業</option>
               <option value="category-traffic" {{#if (eq filterBy 'category-traffic' )}} selected {{/if}}>交通出行</option>
               <option value="category-play" {{#if (eq filterBy 'category-play' )}} selected {{/if}}>休閒娛樂</option>
