@@ -17,11 +17,29 @@ router.get('/', (req, res) => {
   const recordPromise = Record.find().lean().sort({ _id: "asc" })
   const categoryPromise = Category.find().lean()
   Promise.all([recordPromise, categoryPromise])
+    // .then((values) => {
+    //   async (values) => {
+    //     const records = values[0]
+    //     const categories = values[1]
+    //     console.log(categories)
+    //     // await iconSwitchFunction(records, categories)
+    //     // totalAmount = await totalAmountFunction(records, totalAmount)
+    //     res.render('index', { records, totalAmount })
+    //   }
+    // })
+
+
+
     .then((models) => {
       const records = models[0]
       const categories = models[1]
-      iconSwitchFunction(records, categories)
-      totalAmount = totalAmountFunction(records, totalAmount)
+      Promise.all([iconSwitchFunction, totalAmountFunction])
+        .then(() => {
+          iconSwitchFunction(records, categories)
+          totalAmount = totalAmountFunction(records, totalAmount)
+        })
+      // iconSwitchFunction(records, categories)
+      // totalAmount = totalAmountFunction(records, totalAmount)
       res.render('index', { records, totalAmount })
     })
     .catch(error => console.error(error))
