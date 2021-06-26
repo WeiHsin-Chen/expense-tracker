@@ -35,8 +35,9 @@ router.get('/', (req, res) => {
       const categories = models[1]
       Promise.all([iconSwitchFunction(records, categories), totalAmountFunction(records, totalAmount)])
         .then((values) => {
-          return totalAmount = values[1]
-        }).then(res.render('index', { records, totalAmount }))
+          totalAmount = values[1]
+          res.render('index', { records, totalAmount })
+        })
       // iconSwitchFunction(records, categories)
       // totalAmount = totalAmountFunction(records, totalAmount)
     })
