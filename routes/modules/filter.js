@@ -16,7 +16,7 @@ let totalAmount = 0
 router.get('/', (req, res) => {
   const filterBy = req.query.filterBy
 
-  return Record.find()
+  Record.find()
     .lean()
     .then((records) => {
       const filteredRecords = records.filter(record => {
