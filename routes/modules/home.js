@@ -33,14 +33,14 @@ router.get('/', (req, res) => {
     .then((models) => {
       const records = models[0]
       const categories = models[1]
-      Promise.all([iconSwitchFunction, totalAmountFunction])
-        .then(() => {
-          iconSwitchFunction(records, categories)
-          totalAmount = totalAmountFunction(records, totalAmount)
+      Promise.all([iconSwitchFunction(records, categories), totalAmountFunction(records, totalAmount)])
+        .then((values) => {
+          totalAmount = values[1]
+          res.render('index', { records, totalAmount })
         })
       // iconSwitchFunction(records, categories)
       // totalAmount = totalAmountFunction(records, totalAmount)
-      res.render('index', { records, totalAmount })
+
     })
     .catch(error => console.error(error))
 })
