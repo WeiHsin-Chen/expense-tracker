@@ -14,16 +14,16 @@ let totalAmount = 0
 
 // route setting with models seeder connection
 router.get('/', (req, res) => {
-
   Record.find()
     .lean()
     .then(records => {
       Category.find()
         .lean()
         .then(categories => {
-          iconSwitchFunction(records, categories)
-          totalAmount = totalAmountFunction(records, totalAmount)
-          res.render('index', { records, totalAmount })
+          const iconSwitch1 = iconSwitchFunction(records, categories)
+          const totalAmount1 = totalAmountFunction(records, totalAmount)
+          Promise.all([iconSwitch1, totalAmount1])
+          res.render('index', { records, totalAmount1 })
         })
     })
     .catch(error => console.error(error))

@@ -8,10 +8,8 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const hbshelpers = require('handlebars-helpers')
 const helpers = hbshelpers()
-
 const routes = require('./routes')
 
-const Record = require('./models/Record') // read models seeder
 
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
