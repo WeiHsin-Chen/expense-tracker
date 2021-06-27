@@ -14,21 +14,19 @@ let totalAmount = 0
 
 // route setting for search not yet
 router.get('/', (req, res) => {
+  const recordPromise = Record.find().lean().sort({ _id: "asc" })
+  const categoryPromise = Category.find().lean()
   const filterBy = req.query.filterBy
-
-  Record.find()
-    .lean()
-    .then((records) => {
+  Promise.all([recordPromise, categoryPromise])
+    .then((models) => {
+      const records = models[0]
+      const categories = models[1]
       const filteredRecords = records.filter(record => {
         return record.category === filterBy
       })
-      Category.find()
-        .lean()
-        .then((categories) => {
-          iconSwitchFunction(records, categories)
-          totalAmount = totalAmountFunction(filteredRecords, totalAmount)
-          res.render('index', { records: filteredRecords, filterBy, totalAmount })
-        })
+      iconSwitchFunction(records, categories)
+      totalAmount = totalAmountFunction(records, totalAmount)
+      res.render('index', { records: filteredRecords, filterBy, totalAmount })
     })
     .catch(error => console.log(error))
 })
