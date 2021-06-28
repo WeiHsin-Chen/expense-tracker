@@ -16,18 +16,19 @@
         <div class="input-group mb-3">
           <span class="input-group-text" id="name">名稱*</span>
           <input type="text" class="form-control" name="name" value="{{ record.name }}" placeholder="消費品項"
-            aria-label="消費品項" aria-describedby="expense-item">
+            aria-label="消費品項" aria-describedby="expense-item" required>
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="date">日期*</span>
           <input type="date" class="form-control" name="date" value="{{ record.date }}" placeholder="消費日期"
-            aria-label="消費日期" aria-describedby="expense-date">
+            aria-label="消費日期" aria-describedby="expense-date" required>
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="category">類別*</span>
-          <select class="form-select" name="category" value="{{ record.category }}" aria-label="Default select example">
+          <select class="form-select" name="category" value="{{ record.category }}" aria-label="Default select example"
+            required>
             <option selected disabled>記帳類別</option>
             <option value="category-home" {{#if (eq record.category 'category-home' )}} selected {{/if}}>家居物業</option>
             <option value="category-traffic" {{#if (eq record.category 'category-traffic' )}} selected {{/if}}>交通出行
@@ -40,7 +41,8 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="amount">金額*</span>
-          <input type="text" class="form-control" name="amount" value="{{ record.amount }}" aria-label="Amount">
+          <input type="number" class="form-control" name="amount" value="{{ record.amount }}" aria-label="Amount"
+            required>
         </div>
 
         <a href="../">
