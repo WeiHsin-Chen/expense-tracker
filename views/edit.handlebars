@@ -29,7 +29,6 @@
           <span class="input-group-text" id="category">類別*</span>
           <select class="form-select" name="category" value="{{ record.category }}" aria-label="Default select example"
             required>
-            <option selected disabled>記帳類別</option>
             <option value="category-home" {{#if (eq record.category 'category-home' )}} selected {{/if}}>家居物業</option>
             <option value="category-traffic" {{#if (eq record.category 'category-traffic' )}} selected {{/if}}>交通出行
             </option>
