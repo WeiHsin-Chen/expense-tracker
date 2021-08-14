@@ -6,11 +6,12 @@ const booking = require('./modules/booking')
 const filter = require('./modules/filter')
 const users = require('./modules/users')
 const home = require('./modules/home')
+const { authenticator } = require('../middleware/auth')
 
-router.use('/booking', booking)
-router.use('/filter', filter)
+router.use('/booking', authenticator, booking)
+router.use('/filter', authenticator, filter)
 router.use('/users', users)
-router.use('/', home)
+router.use('/', authenticator, home)
 
 // 匯出路由器
 module.exports = router
