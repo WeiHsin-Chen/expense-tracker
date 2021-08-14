@@ -14,7 +14,8 @@ let totalAmount = 0
 
 // route setting for search not yet
 router.get('/', (req, res) => {
-  const recordPromise = Record.find().lean().sort({ _id: "asc" })
+  const merchant = req.user._id
+  const recordPromise = Record.find({ merchant }).lean().sort({ _id: "asc" })
   const categoryPromise = Category.find().lean()
   const filterBy = req.query.filterBy
   Promise.all([recordPromise, categoryPromise])

@@ -14,8 +14,10 @@ let totalAmount = 0
 
 // route setting with models seeder connection
 router.get('/', (req, res) => {
-  const recordPromise = Record.find().lean().sort({ _id: "asc" })
+  const merchant = req.user._id
+  const recordPromise = Record.find({ merchant }).lean().sort({ _id: "asc" })
   const categoryPromise = Category.find().lean()
+
   Promise.all([recordPromise, categoryPromise])
     .then((models) => {
       const records = models[0]
