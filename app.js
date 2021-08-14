@@ -1,9 +1,14 @@
+
+
 // include packages and define server related variables
 const express = require('express')
 const session = require('express-session')
 const usePassport = require('./config/passport')
 const app = express()
-const PORT = process.env.PORT || 3000
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+const PORT = process.env.PORT
 
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
@@ -16,7 +21,7 @@ const flash = require('connect-flash')
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))

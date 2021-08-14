@@ -3,6 +3,7 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 .jpg
+.env
 
 # npm
 /node_modules
