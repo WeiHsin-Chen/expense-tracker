@@ -18,19 +18,32 @@ router.get('/', (req, res) => {
   const recordPromise = Record.find({ merchant }).lean().sort({ _id: "asc" })
   const categoryPromise = Category.find().lean()
   const filterBy = req.query.filterBy
+  const monthFilter = req.query.monthFilter
   Promise.all([recordPromise, categoryPromise])
     .then((models) => {
       const records = models[0]
       const categories = models[1]
+
       const filteredRecords = records.filter(record => {
-        return record.category === filterBy
+        if (filterBy && monthFilter) {
+          return record.category === filterBy && record.date.slice(5, 7) === monthFilter
+        }
+        if (filterBy) {
+          return record.category === filterBy
+        }
+        if (monthFilter) {
+          return record.date.slice(5, 7) === monthFilter
+        }
+        else { return records }
       })
       iconSwitchFunction(records, categories)
-      totalAmount = totalAmountFunction(records, totalAmount)
-      res.render('index', { records: filteredRecords, filterBy, totalAmount })
+      if (filteredRecords) {
+        totalAmount = totalAmountFunction(filteredRecords, totalAmount)
+      }
+      else { totalAmount = totalAmountFunction(records, totalAmount) }
+      res.render('index', { records: filteredRecords, filterBy, monthFilter, totalAmount })
     })
     .catch(error => console.log(error))
 })
 
-// 匯出路由模組
 module.exports = router

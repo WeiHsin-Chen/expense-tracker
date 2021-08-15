@@ -8,14 +8,34 @@
         <form action="/filter">
           <div class="form-group">
             <h4 class="mb-2">記帳類別</h4>
-            <select name="filterBy" id="inputFilter" class="form-control" onchange="action='/filter';submit();">
-              <option value="categoryAll" selected disabled>記帳類別</option>
-              <option value="category-home" {{#if (eq filterBy 'category-home' )}} selected {{/if}}>家居物業</option>
-              <option value="category-traffic" {{#if (eq filterBy 'category-traffic' )}} selected {{/if}}>交通出行</option>
-              <option value="category-play" {{#if (eq filterBy 'category-play' )}} selected {{/if}}>休閒娛樂</option>
-              <option value="category-meal" {{#if (eq filterBy 'category-meal' )}} selected {{/if}}>餐飲食品</option>
-              <option value="category-others" {{#if (eq filterBy 'category-others' )}} selected {{/if}}>其他</option>
-            </select>
+            <div class="mb-2">
+              <select name="monthFilter" id="monthFilter" class="form-control" onchange="action='/filter';submit();">
+                <option value="monthAll" selected disabled>月份</option>
+                <option value="01" {{#if (eq monthFilter '01' )}} selected {{/if}}>一月</option>
+                <option value="02" {{#if (eq monthFilter '02' )}} selected {{/if}}>二月</option>
+                <option value="03" {{#if (eq monthFilter '03' )}} selected {{/if}}>三月</option>
+                <option value="04" {{#if (eq monthFilter '04' )}} selected {{/if}}>四月</option>
+                <option value="05" {{#if (eq monthFilter '05' )}} selected {{/if}}>五月</option>
+                <option value="06" {{#if (eq monthFilter '06' )}} selected {{/if}}>六月</option>
+                <option value="07" {{#if (eq monthFilter '07' )}} selected {{/if}}>七月</option>
+                <option value="08" {{#if (eq monthFilter '08' )}} selected {{/if}}>八月</option>
+                <option value="09" {{#if (eq monthFilter '09' )}} selected {{/if}}>九月</option>
+                <option value="10" {{#if (eq monthFilter '10' )}} selected {{/if}}>十月</option>
+                <option value="11" {{#if (eq monthFilter '11' )}} selected {{/if}}>十一月</option>
+                <option value="12" {{#if (eq monthFilter '12' )}} selected {{/if}}>十二月</option>
+              </select>
+            </div>
+            <div>
+              <select name="filterBy" id="inputFilter" class="form-control" onchange="action='/filter';submit();">
+                <option value="categoryAll" selected disabled>記帳類別</option>
+                <option value="category-home" {{#if (eq filterBy 'category-home' )}} selected {{/if}}>家居物業</option>
+                <option value="category-traffic" {{#if (eq filterBy 'category-traffic' )}} selected {{/if}}>交通出行
+                </option>
+                <option value="category-play" {{#if (eq filterBy 'category-play' )}} selected {{/if}}>休閒娛樂</option>
+                <option value="category-meal" {{#if (eq filterBy 'category-meal' )}} selected {{/if}}>餐飲食品</option>
+                <option value="category-others" {{#if (eq filterBy 'category-others' )}} selected {{/if}}>其他</option>
+              </select>
+            </div>
           </div>
         </form>
       </div>
