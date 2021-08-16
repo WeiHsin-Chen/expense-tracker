@@ -2,24 +2,28 @@
   "recordSeeds": [
     {
       "name": "午餐",
+      "merchant": "麥當勞",
       "category": "category-meal",
       "date": "2021-04-29",
       "amount": 300
     },
     {
       "name": "捷運",
+      "merchant": "台北捷運公司",
       "category": "category-traffic",
       "date": "2021-04-30",
       "amount": 200
     },
     {
       "name": "電影：電流大戰",
+      "merchant": "華納威秀",
       "category": "category-play",
       "date": "2021-04-30",
       "amount": 250
     },
     {
       "name": "房屋租金",
+      "merchant": "房東",
       "category": "category-home",
       "date": "2021-05-02",
       "amount": 22000

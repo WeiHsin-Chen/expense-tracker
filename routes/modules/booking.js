@@ -13,8 +13,7 @@ router.get('/new', (req, res) => {
 // route setting for new expense booking creating
 router.post('/', (req, res) => {
   const userId = req.user._id
-  const { name, category, date, amount } = req.body
-  return Record.create({ name, category, date, amount, userId })
+  return Record.create({ ...req.body, userId })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
@@ -32,13 +31,9 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  const { name, category, date, amount } = req.body
   return Record.findOne({ _id, userId })
     .then(record => {
-      record.name = name
-      record.category = category
-      record.date = date
-      record.amount = amount
+      Object.assign(record, req.body)
       record.userId = userId
       return record.save()
     })

@@ -10,7 +10,7 @@
             <h4 class="mb-2">記帳類別</h4>
             <div class="mb-2">
               <select name="monthFilter" id="monthFilter" class="form-control" onchange="action='/filter';submit();">
-                <option value="monthAll" selected disabled>月份</option>
+                <option value="monthAll" selected>全部月份</option>
                 <option value="01" {{#if (eq monthFilter '01' )}} selected {{/if}}>一月</option>
                 <option value="02" {{#if (eq monthFilter '02' )}} selected {{/if}}>二月</option>
                 <option value="03" {{#if (eq monthFilter '03' )}} selected {{/if}}>三月</option>
@@ -27,7 +27,7 @@
             </div>
             <div>
               <select name="filterBy" id="inputFilter" class="form-control" onchange="action='/filter';submit();">
-                <option value="categoryAll" selected disabled>記帳類別</option>
+                <option value="categoryAll" selected>全部記帳類別</option>
                 <option value="category-home" {{#if (eq filterBy 'category-home' )}} selected {{/if}}>家居物業</option>
                 <option value="category-traffic" {{#if (eq filterBy 'category-traffic' )}} selected {{/if}}>交通出行
                 </option>
@@ -61,6 +61,11 @@
             <th scope="row">
               <i class=" {{this.category}} fa-2x"></i>
             </th>
+            <td>
+              <p>
+                {{this.merchant}}
+              </p>
+            </td>
             <td>
               <p>
                 {{this.name}}

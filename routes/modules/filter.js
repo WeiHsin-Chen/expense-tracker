@@ -25,13 +25,13 @@ router.get('/', (req, res) => {
       const categories = models[1]
 
       const filteredRecords = records.filter(record => {
-        if (filterBy && monthFilter) {
+        if (filterBy !== 'categoryAll' && monthFilter !== 'monthAll') {
           return record.category === filterBy && record.date.slice(5, 7) === monthFilter
         }
-        if (filterBy) {
+        if (filterBy !== 'categoryAll') {
           return record.category === filterBy
         }
-        if (monthFilter) {
+        if (monthFilter !== 'monthAll') {
           return record.date.slice(5, 7) === monthFilter
         }
         else { return records }
