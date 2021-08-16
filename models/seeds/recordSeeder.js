@@ -23,10 +23,10 @@ db.once('open', () => {
       password: hash
     }))
     .then(user => {
-      const merchant = user._id
+      const userId = user._id
       return Promise.all(Array.from(
         { length: recordData.recordSeeds.length },
-        (_, i) => Record.create({ ...recordData.recordSeeds[i], merchant })
+        (_, i) => Record.create({ ...recordData.recordSeeds[i], userId })
       ))
         .then(() => {
           console.log('insert Record done...')

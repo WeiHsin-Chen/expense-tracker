@@ -12,34 +12,34 @@ router.get('/new', (req, res) => {
 
 // route setting for new expense booking creating
 router.post('/', (req, res) => {
-  const merchant = req.user._id
+  const userId = req.user._id
   const { name, category, date, amount } = req.body
-  return Record.create({ name, category, date, amount, merchant })
+  return Record.create({ name, category, date, amount, userId })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
 // route setting for editing booking view
 router.get('/:id/edit', (req, res) => {
-  const merchant = req.user._id
+  const userId = req.user._id
   const _id = req.params.id
-  return Record.findOne({ _id, merchant })
+  return Record.findOne({ _id, userId })
     .lean()
     .then((record) => res.render('edit', { record }))
     .catch(error => console.log(error))
 })
 
 router.put('/:id', (req, res) => {
-  const merchant = req.user._id
+  const userId = req.user._id
   const _id = req.params.id
   const { name, category, date, amount } = req.body
-  return Record.findOne({ _id, merchant })
+  return Record.findOne({ _id, userId })
     .then(record => {
       record.name = name
       record.category = category
       record.date = date
       record.amount = amount
-      record.merchant = merchant
+      record.userId = userId
       return record.save()
     })
     .then(() => res.redirect('/'))
@@ -47,9 +47,9 @@ router.put('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-  const merchant = req.user._id
+  const userId = req.user._id
   const _id = req.params.id
-  return Record.findOne({ _id, merchant })
+  return Record.findOne({ _id, userId })
     .then(record => record.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
