@@ -10,7 +10,7 @@ router.get('/new', (req, res) => {
   return res.render('new')
 })
 
-// route setting for new expense booking creating
+// route setting for new expense records creating
 router.post('/', (req, res) => {
   const userId = req.user._id
   return Record.create({ ...req.body, userId })
@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// route setting for editing booking view
+// route setting for editing records view
 router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id

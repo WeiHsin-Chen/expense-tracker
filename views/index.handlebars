@@ -78,12 +78,12 @@
               $ {{this.amount}}
             </td>
             <td>
-              <a href="../booking/{{this._id}}/edit">
+              <a href="../records/{{this._id}}/edit">
                 <input class="btn btn-outline-info" type="submit" value="編輯">
               </a>
             </td>
             <td>
-              <form action="/booking/{{this._id}}?_method=DELETE " method="POST">
+              <form action="/records/{{this._id}}?_method=DELETE " method="POST">
                 <input class="btn btn-outline-danger" type="submit" value="刪除">
               </form>
             </td>
@@ -91,7 +91,7 @@
           {{/each}}
         </tbody>
       </table>
-      <a href="../booking/new">
+      <a href="../records/new">
         <input class="btn btn-outline-primary" type="submit" value="新增支出">
       </a>
     </div>

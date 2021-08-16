@@ -12,7 +12,7 @@
         *必填欄位
       </div>
 
-      <form action="/booking/{{record._id}}?_method=PUT " method="POST">
+      <form action="/records/{{record._id}}?_method=PUT " method="POST">
         <div class="input-group mb-3">
           <span class="input-group-text" id="name">名稱*</span>
           <input type="text" class="form-control" name="name" value="{{ record.name }}" placeholder="消費品項"
