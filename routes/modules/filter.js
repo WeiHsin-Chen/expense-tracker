@@ -37,10 +37,7 @@ router.get('/', (req, res) => {
         else { return records }
       })
       iconSwitchFunction(records, categories)
-      if (filteredRecords) {
-        totalAmount = totalAmountFunction(filteredRecords, totalAmount)
-      }
-      else { totalAmount = totalAmountFunction(records, totalAmount) }
+      totalAmount = totalAmountFunction(filteredRecords, totalAmount)
       res.render('index', { records: filteredRecords, filterBy, monthFilter, totalAmount })
     })
     .catch(error => console.log(error))
